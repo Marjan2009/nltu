@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#070b14">
+  <meta name="description" content="Student Hub — розклад, дедлайни та матеріали">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="design-upgrade.css">
+  <title>Student Hub</title>
+</head>
+<body>
+  <div class="noise"></div>
+  <div class="app">
+    <aside class="sidebar" id="sidebar">
+      <a class="logo" href="#"><span class="logo-code">&lt;/&gt;</span><span>STUDENT<br><b>HUB</b></span></a>
+      <nav class="nav" aria-label="Навігація">
+        <button class="nav-btn active" data-page="home"><i>▦</i> Огляд</button>
+        <button class="nav-btn" data-page="schedule"><i>◫</i> Розклад</button>
+        <button class="nav-btn" data-page="tasks"><i>✓</i> Завдання <em id="task-counter">0</em></button>
+        <button class="nav-btn" data-page="files"><i>▤</i> Матеріали</button>
+      </nav>
+      <p class="system"><span></span> SYSTEM ONLINE</p>
+    </aside>
+
+    <main>
+      <header class="topbar">
+        <button class="hamburger" id="menu-toggle" aria-label="Відкрити меню">☰</button>
+        <div><p class="micro" id="date-label">ЗАВАНТАЖЕННЯ...</p><h1 id="heading">Твій навчальний простір</h1></div>
+        <button class="outline-button" id="go-today">Сьогодні</button>
+        <button class="primary-button" data-modal="lesson">＋ Додати</button>
+      </header>
+
+      <section class="page active" id="home">
+        <article class="hero">
+          <div><p class="micro glow">// STUDY MODE ACTIVE</p><h2>Плануй. Вчися.<br><strong>Досягай більшого.</strong></h2><p class="hero-copy">Розклад, домашні завдання й усі потрібні матеріали в одному цифровому хабі.</p><button class="primary-button" data-modal="lesson">Додати пару <b>→</b></button></div>
+          <div class="terminal-art"><span>{</span><div><small>SEMESTER</small><b>01</b><small>READY_</small></div><span>}</span></div>
+        </article>
+        <div class="metrics">
+          <article><span class="metric-icon blue">◫</span><div><b id="lessons-today">0</b><p>Пар сьогодні</p></div></article>
+          <article><span class="metric-icon green">✓</span><div><b id="tasks-open">0</b><p>Активних завдань</p></div></article>
+          <article><span class="metric-icon violet">▤</span><div><b id="file-count">0</b><p>Матеріалів</p></div></article>
+        </div>
+        <div class="home-grid">
+          <article class="panel"><div class="panel-title"><div><p class="micro">НАСТУПНЕ</p><h2>Пари сьогодні</h2></div><button class="link-button" data-page-link="schedule">Розклад →</button></div><div id="today-list"></div></article>
+          <article class="panel"><div class="panel-title"><div><p class="micro">ДЕДЛАЙНИ</p><h2>Найближчі</h2></div><button class="link-button" data-page-link="tasks">Усі →</button></div><div id="deadline-list"></div></article>
+        </div>
+      </section>
+
+      <section class="page" id="schedule">
+        <div class="section-title"><div><p class="micro">WEEKLY OVERVIEW</p><h2>Розклад занять</h2></div><button class="primary-button" data-modal="lesson">＋ Нова пара</button></div>
+        <div class="week-switch" role="group" aria-label="Оберіть тип навчального тижня">
+          <span>ТИЖДЕНЬ:</span><button class="week-choice active" data-week="numerator">Чисельник</button><button class="week-choice" data-week="denominator">Знаменник</button>
+        </div>
+        <div class="day-tabs" id="day-tabs"></div>
+        <div class="schedule-board" id="schedule-board"></div>
+      </section>
+
+      <section class="page" id="tasks">
+        <div class="section-title"><div><p class="micro">DEADLINE CONTROL</p><h2>Домашні завдання</h2></div><button class="primary-button" data-modal="task">＋ Нове завдання</button></div>
+        <div class="filters"><button class="filter active" data-filter="all">Усі</button><button class="filter" data-filter="open">Активні</button><button class="filter" data-filter="done">Виконані</button></div>
+        <div class="task-grid" id="task-list"></div>
+      </section>
+
+      <section class="page" id="files">
+        <div class="section-title"><div><p class="micro">KNOWLEDGE BASE</p><h2>Матеріали</h2></div><button class="primary-button" data-modal="file">＋ Додати матеріал</button></div>
+        <p class="storage-note">PDF зберігається локально у твоєму браузері — його ніхто не бачить.</p>
+        <label class="search"><span>⌕</span><input id="search-files" type="search" placeholder="Пошук за назвою або предметом"></label>
+        <div class="file-grid" id="file-list"></div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-wrap" id="modal-wrap" aria-hidden="true"><section class="modal" role="dialog" aria-modal="true"><button class="close" id="modal-close" aria-label="Закрити">×</button><p class="micro" id="modal-kicker">NEW ENTRY</p><h2 id="modal-title">Новий запис</h2><form id="entry-form"></form></section></div>
+  <template id="empty-state"><div class="empty"><span>◌</span><b>Тут поки порожньо</b><p>Додай перший запис кнопкою вище.</p></div></template>
+  <script src="app.js" defer></script>
+</body>
+</html>

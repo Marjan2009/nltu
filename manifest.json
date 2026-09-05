@@ -1,0 +1,10 @@
+{
+  "name": "Student Hub",
+  "short_name": "StudentHub",
+  "description": "Розклад пар, завдання та матеріали студента",
+  "lang": "uk",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#070b14",
+  "theme_color": "#070b14"
+}
